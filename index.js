@@ -89,6 +89,8 @@ client.on("message", async message => {
 
 
     if(cmd === "name") {
+
+        if(message.channel.id == "845606633547366440"){
         if(message.member.roles.cache.some(role => role.name === 'cool peeps')){
 
         if (talkedRecently.has(message.author.id)) {
@@ -116,6 +118,9 @@ client.on("message", async message => {
         message.member.setNickname(randomname.replace('changeNick ', ''));
         message.reply("You are **"+randomname+"**. Nickname changed successfuly. See you soon!");
     }
+}
+else 
+message.channel.send('Wrong channel pal.')
 }
 
 
