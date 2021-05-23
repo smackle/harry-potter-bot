@@ -89,10 +89,10 @@ client.on("message", async message => {
 
 
     if(cmd === "name") {
+        if(message.member.roles.cache.some(role => role.name === 'cool peeps')){
 
-        if(message.member.roles.cache.some(role => role.name === 'Ravenclaw' || role.name === 'Slytherin' || role.name === 'Gryffindor' || role.name === 'Hufflepuff'))
-        {
-            message.reply('Your house has been assigned. So you cant choose a character anymore. Ask mods for help!')
+        if (talkedRecently.has(message.author.id)) {
+            message.reply("You have changed your name once. It can't be changed anymore. Contact a mod for help. - ");
     }
     else{
         
@@ -101,8 +101,25 @@ client.on("message", async message => {
         if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
         message.member.setNickname(randomname.replace('changeNick ', ''));
         message.reply("You are **"+randomname+"**. Nickname changed successfuly. See you soon!");
+
+        talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          talkedRecently.delete(message.author.id);
+        }, 172800000);
+    }
+    }
+    else{
+        const randomname = hparray[Math.floor(Math.random() * hparray.length)];
+        //message.reply("as "+randomname);
+        if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
+        message.member.setNickname(randomname.replace('changeNick ', ''));
+        message.reply("You are **"+randomname+"**. Nickname changed successfuly. See you soon!");
     }
 }
+
+
+
 
     if(cmd === "house") {
 
@@ -130,15 +147,7 @@ client.on("message", async message => {
 
      if(cmd === 'spell'){
 
-        // var parts = message.content.split(" ");
-        // var search = args.join(" ")
-        // if(!search) {
-        //     message.channel.send('Please type a character name with the command too.')        
-        //     }
-
-        // if(parts.length > 1) {
-        //     search = parts.slice(1, parts.length).join(" "); }
-          //   console.log(harryPotterSpells.all)
+     
              const randomspell = harryPotterSpells.all[Math.floor(Math.random() * harryPotterSpells.all.length)];
              console.log(randomspell)
              const embed = new Discord.MessageEmbed()
