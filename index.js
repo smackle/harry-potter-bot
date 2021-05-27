@@ -41,7 +41,6 @@ const hparray =[
     `Dolores Jane Umbridge`,
     `Horrace Slughorn`,
     `Draco Malfoy`,
-    `Ginny Weasley`,
     `Lucius Malfoy`,
     `Gilderoy Lockhart`,
     `Fred Weasly`,
@@ -59,6 +58,7 @@ const hparray =[
     `Pomona Sprout`,
     `Kingsley Shacklebolt`,
     `Narcissa Malfoy`,
+    `Ginny Weasley`,
     `Fleur Delecour`,
     `Xenophilius Lovegood`,
     `Moaning Myrtle`,
@@ -67,7 +67,20 @@ const hparray =[
     `Nearly Headless Nick`,
     `Gellert Grindelwald`,
     `Dementors`,
-    `Buckbeak`
+    `Buckbeak`,
+    `Lily Potter`,
+    `Poppy Pomfrey`,
+    `James Potter`,
+    `Godric Gryffindor`,
+    `Fluffy`,
+    `Grawpy`,
+    `Barty Crouch Jr.`,
+    `Mrs. Norris`,
+    `Dudley Dursley`,
+    `Parvati Patil`,
+    `Padma Patil`,
+    `Nymphadora Tonks`,
+    `Viktor Krum`
         ];
 
 
