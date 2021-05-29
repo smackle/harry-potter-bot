@@ -182,6 +182,9 @@ message.channel.send('Wrong channel pal.')
             console.log(`<@${randMember.user.id}>`)
             message.channel.send(`<@${randMember.user.id}> is **Ginny Weasley** of the Server!`)
          }
+         else{
+             message.channel.send('Only Dumbledore can use this command.')
+         }
      }
 
 
