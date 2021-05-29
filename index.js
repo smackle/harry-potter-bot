@@ -176,11 +176,10 @@ message.channel.send('Wrong channel pal.')
 
      if(cmd === 'ginny'){
          if(message.author.id == "511234972602859521"){
-            const members = await message.guild.members.fetch();
-            const randMember = members.random(); 
-           // message.channel.send(randMember.user.username);
-            console.log(`<@${randMember.user.id}>`)
-            message.channel.send(`<@${randMember.user.id}> is **Ginny Weasley** of the Server!`)
+            const members = message.guild.roles.cache.get('771308497252909066').members.map(m=>m.user.id);
+const randommember = members[Math.floor(Math.random() * members.length)];
+console.log(`<@${randommember}>`)
+message.channel.send(`<@${randommember}> is **Ginny Weasley** of the Server!`)
          }
          else{
              message.channel.send('Only Dumbledore can use this command.')
