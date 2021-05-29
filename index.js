@@ -174,6 +174,15 @@ message.channel.send('Wrong channel pal.')
              message.channel.send(embed)
      }
 
+     if(cmd === 'ginny'){
+         if(message.author.id == "511234972602859521"){
+            const members = await message.guild.members.fetch();
+            const randMember = members.random(); 
+           // message.channel.send(randMember.user.username);
+            console.log(`<@${randMember.user.id}>`)
+            message.channel.send(`<@${randMember.user.id}> is **Ginny Weasley** of the Server!`)
+         }
+     }
 
 
 
