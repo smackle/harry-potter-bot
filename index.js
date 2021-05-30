@@ -174,17 +174,17 @@ message.channel.send('Wrong channel pal.')
              message.channel.send(embed)
      }
 
-     if(cmd === 'ginny'){
-         if(message.author.id == "511234972602859521"){
-            const members = message.guild.roles.cache.get('771308497252909066').members.map(m=>m.user.id);
-const randommember = members[Math.floor(Math.random() * members.length)];
-console.log(`<@${randommember}>`)
-message.channel.send(`<@${randommember}> is **Ginny Weasley** of the Server!`)
-         }
-         else{
-             message.channel.send('Only Dumbledore can use this command.')
-         }
-     }
+        if(cmd === 'ginny'){
+            if(message.author.id == "511234972602859521"){
+                const members = message.guild.roles.cache.get('771308497252909066').members.map(m=>m.user.id);
+                const randommember = members[Math.floor(Math.random() * members.length)];
+               console.log(`<@${randommember}>`)
+               message.channel.send(`<@${randommember}> is **Ginny Weasley** of the Server!`)
+            }
+            else{
+                message.channel.send('Only Dumbledore can use this command.')
+            }
+        }
 
 
 
