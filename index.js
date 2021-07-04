@@ -4,89 +4,177 @@ const Discord = require("discord.js")
 const { Client } = require("discord.js");
 // const fetch = require("node-fetch");
 const client = new Client();
-const PREFIX = "hp.";
-let nerds = require('nerds');
-const harryPotterSpells = require('harry-potter-spells')
+const PREFIX = "m.";
+// let nerds = require('nerds');
+// const harryPotterSpells = require('harry-potter-spells')
 const talkedRecently = new Set();    
 
-
-const hphouse =[
-    `Gryffindor`,
-    `Hufflepuff`,
-    `Ravenclaw`,
-    `Slytherin`
-];
-const hparray =[
-    `Whomping Willow`,
-    `Cedric Diggory`,
-    `Seamus Finnegan`,
-    `Cho Chang`,
-    `Kreacher the house elf`,
-    `Hedwig`,
-    `Gilderoy Lockhart`,
-    `Fenrir Greyback`,
-    `Nagini`,
-    `The Sorting Hat`,
-    `Severus Snape`,
-    `Hermione Granger`,
-    `Harry Potter`,
-    `Rubeus Hagrid`,
-    `Ron Weasley`,
-    `Sirius Black`,
-    `Albus Dumbledore`,
-    `Minerva Mcgonagall`,
-    `Tom Riddle/Lord Voldemort`,
-    `Bellatrix Lestrange`,
-    `Luna Lovegood`,
-    `Dolores Jane Umbridge`,
-    `Horrace Slughorn`,
-    `Draco Malfoy`,
-    `Lucius Malfoy`,
-    `Gilderoy Lockhart`,
-    `Fred Weasly`,
-    `George Weasley`,
-    `Remus Lupin`,
-    `Dobby the house elf`,
-    `Neville Longbottom`,
-    `Alastor "Mad Eye" Moody`,
-    `Molly Weasley`,
-    `Arthur Weasley`,
-    `Rita Skeeter`,
-    `Sybill Trelawney`,
-    `Peter Pettigrew (Wormtail)`,
-    `Salazar Slytherin`,
-    `Pomona Sprout`,
-    `Kingsley Shacklebolt`,
-    `Narcissa Malfoy`,
-    `Ginny Weasley`,
-    `Fleur Delecour`,
-    `Xenophilius Lovegood`,
-    `Moaning Myrtle`,
-    `Filius Flitwick`,
-    `Aunt Marge`,
-    `Nearly Headless Nick`,
-    `Gellert Grindelwald`,
-    `Dementors`,
-    `Buckbeak`,
-    `Lily Potter`,
-    `Poppy Pomfrey`,
-    `James Potter`,
-    `Godric Gryffindor`,
-    `Fluffy`,
-    `Grawpy`,
-    `Barty Crouch Jr.`,
-    `Mrs. Norris`,
-    `Dudley Dursley`,
-    `Parvati Patil`,
-    `Padma Patil`,
-    `Nymphadora Tonks`,
-    `Viktor Krum`
+const artists =[
+        `Britney Spears`,
+        `Bon Jovi`,
+        `Queen`,
+        `Bob Dylan`,
+        `Tupac`,
+        `Kuman Sanu`,
+        `Mohammed Rafi`,
+        `R. D. Burman`,
+        `Backstreet Boys`,
+        `Simon & Garfunkel`,
+        `Kishore Kumar`,
+        `Guns N' Roses`,
+        `Taylor Swift`,
+        `Eminem`,
+        `Shreya Ghoshal`,
+        `Shania Twain`,
+        `Fleetwood Mac`,
+        `Lil Nas X`,
+        `Bruce Springsteen`,
+        `The Rolling Stones`,
+        `Aerosmith`,
+        `Pink Floyd`,
+        `AC/DC`,
+        `Elton John`,
+        `Michael Jackson`,
+        `Led Zeppelin`,
+        `Elvis Presley`,
+        `The Beatles`,
+        `Rihanna`,
+        `Paul McCartney`,
+        `Usher`,
+        `Drake`,
+        `Katy Perry`,
+        `Bruno Mars`,
+        `Maroon 5`,
+        `Beyoncé`,
+        `P!nk`,
+        `Chris Brown`,
+        `Justin Timberlake`,
+        `Paul Anka`,
+        `Kanye West`,
+        `Jay-Z`,
+        `Justin Bieber`,
+        `50 Cent`,
+        `J. Cole`,
+        `Billie Eilish`,
+        `Dua Lipa`,
+        `Harry Styles`,
+        `Selena Gomez`,
+        `The Weeknd,`,
+        `Camila Cabello`,
+        `Halsey`,
+        `Imagine Dragons`,
+        `Post Malone`,
+        `Zayn Malik`,
+        `Charlie Puth`,
+        `Nick Jonas`,
+        `Niall Horan`,
+        `Khalid`,
+        `Nicki Minaj`,
+        `Liam Payne`,
+        `Lizzo`,
+        `Cardi B`,
+        `Conan Gray`,
+        `Lana Del Rey`,
+        `Charli XCX`,
+        `Carly Rae Jepsen`,
+        `Joji`,
+        `Jon Bellion`,
+        `Gorillaz`,
+        `MGMT`,
+        `Arctic Monkeys`,
+        `Julian Casablancas`,
+        `Fabrizio Moretti`,
+        `Alex Turner`,
+        `Wallows`,
+        `Lorde`,
+        `Dayglow`,
+        `Troye Sivan`,
+        `Powfu`,
+        `bbno$`,
+        `Clairo`,
+        `The Neighbourhood`,
+        `girl in red`,
+        `The 1975`,
+        `Jeremy Zucker`,
+        `Kid Bloom`,
+        `Beach Bunny`,
+        `Olivia Rodrigo`,
+        `Prateek Kuhad`,
+        `Ritviz`,
+        `Anuv Jain`,
+        `Taba Chake`,
+        `The Local Train`,
+        `The Indian Ocean`,
+        `Nirvana`,
+        `Lifafa`,
+        `Udbhav`,
+        `Himesh Reshamiya`,
+        `Piyush Mishra`,
+        `RFAK`,
+        `Momina Mustehsan`,
+        `Ali Sethi`,
+        `Tanmaya Bhatnagar`,
+        `A.R. Rahman`,
+        `Lucky Ali`,
+        `Papon`,
+        `KK`,
+        `The Yellow Diary`,
+        `Osho Jain`,
+        `Radiohead`,
+        `Car Seat Headrest`,
+        `Death Grips`,
+        `Tame Impala`,
+        `6ix9ine`,
+        `Eden`,
+        `Cage The Elephant`,
+        `Neutral Milk Hotel`,
+        `5 Seconds of Summer`,
+        `Kid Cudi`,
+        `Travis Scott`,
+        `Hans Zimmer`,
+        `Playboi Carti`,
+        `Kendrick Lamar`,
+        `Lil Uzi Vert`,
+        `Kodak Black`,
+        `DaBaby`,
+        `Blackbear`,
+        `Beach House`,
+        `XXXTENTACION`,
+        `Sufjan Stevens`,
+        `BTS`,
+        `Labrinth`,
+        `John Mayer`,
+        `Hozier`,
+        `Frank Ocean`,
+        `bloodpound`,
+        `Falguni Pathak`,
+        `Chandrabindoo`,
+        `Manoj Tiwari`,
+        `Daler Mehndi`,
+        `Sidhu Moose Wala`,
+        `Khesari Lal Yadav`,
+        `Diljit Dosanjh`,
+        `Rakhi Sawant`,
+        `Anu Malik`,
+        `Ishq Bector`,
+        `Yo Yo Honey Singh`,
+        `Udit Narayan`,
+        `Pankaj Udhas`,
+        `Bappi Lahiri`,
+        `Altaf Raja`,
+        `Sonu Nigam`,
+        `Dipzet`,
+        `Seedhe Maut`,
+        `Prabh Deep`,
+        `Divine`,
+        `Lata Mangeshkar`,
+        `Baba Sehgal`,
         ];
 
 
 client.on("ready", () =>{
-    client.user.setActivity('HP Event Soon!')
- console.log("HP Bot is online!")
+    client.user.setActivity('Get Ready!')
+ console.log("Music Bot is online!")
     });
 client.on("warn", console.warn);
 client.on("error", console.error);
@@ -100,91 +188,56 @@ client.on("message", async message => {
 
     if (cmd === "ping") return message.channel.send(`Pong! \`${client.ws.ping}ms\``);
 
+    if(message.channel.id == "845606633547366440" || message.channel.id =='550371111377043466'){
+    if(cmd === "artist" || cmd === "a") {
 
-    if(cmd === "name") {
-
-        if(message.channel.id == "845606633547366440"){
-        if(message.member.roles.cache.some(role => role.name === 'cool peeps')){
+        if(message.member.roles.cache.some(role => role.name === 'Retry'))
+        {
+            const { guild } = message
+        
+            const randomartist = artists[Math.floor(Math.random() * artists.length)];
+    
+            message.reply("Hmm. So you are retrying. I see. You are **"+randomartist+"** now."); 
+            if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
+         message.member.setNickname(randomartist.replace('changeNick ', ''));  
+      }
+    
+     else{
 
         if (talkedRecently.has(message.author.id)) {
-            message.reply("You have changed your name once. It can't be changed anymore. Contact a mod for help. - ");
-    }
-    else{
+            message.reply("You gotta wait to use this command again chief. Ask a mod if you really really wanna change it.");
+      } 
+      else {
         
-        const randomname = hparray[Math.floor(Math.random() * hparray.length)];
-        //message.reply("as "+randomname);
-        if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
-        message.member.setNickname(randomname.replace('changeNick ', ''));
-        message.reply("You are **"+randomname+"**. Nickname changed successfuly. See you soon!");
-
-        talkedRecently.add(message.author.id);
-        setTimeout(() => {
-          // Removes the user from the set after a minute
-          talkedRecently.delete(message.author.id);
-        }, 172800000);
-    }
-    }
-    else{
-        const randomname = hparray[Math.floor(Math.random() * hparray.length)];
-        //message.reply("as "+randomname);
-        if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
-        message.member.setNickname(randomname.replace('changeNick ', ''));
-        message.reply("You are **"+randomname+"**. Nickname changed successfuly. See you soon!");
-    }
-}
-else 
-message.channel.send('Wrong channel pal.')
-}
-
-
-
-
-    if(cmd === "house") {
-
-        if(message.member.roles.cache.some(role => role.name === 'Ravenclaw' || role.name === 'Slytherin' || role.name === 'Gryffindor' || role.name === 'Hufflepuff'))
-        {
-            message.reply('You have been assigned one house already.')
-    }
-    
-    else{
         const { guild } = message
         
-        const randomhouse = hphouse[Math.floor(Math.random() * hphouse.length)];
+        const randomartist = artists[Math.floor(Math.random() * artists.length)];
 
-        var role= guild.roles.cache.find(role => role.name === randomhouse);
-        message.member.roles.add(role);
+        replylist = [`Oh my. You are **${randomartist}**.`,
+        `Damn son. You are **${randomartist}**.`,
+        `Looks like you are **${randomartist}** now.`,
+        `Well well well. It's **${randomartist}** yall.`,
+        `Hot damn. you got **${randomartist}**.`    
+    ]
+    const randomreply = replylist[Math.floor(Math.random() * replylist.length)];
 
-        message.reply("You are assigned in **"+randomhouse+"**.");
-        if(randomhouse == 'Ravenclaw') message.channel.send('https://tenor.com/view/harry-potter-ravenclaw-flames-logo-seal-gif-5254360')
-        if(randomhouse == 'Slytherin') message.channel.send('https://cdn.discordapp.com/attachments/550371111377043466/845600633813204992/463b937ae9dccedb1e807c69406a59cb.gif')
-        if(randomhouse == 'Gryffindor') message.channel.send('https://images-ext-2.discordapp.net/external/UvSE64VKq-PYNGfqByX_gmx3be5pGz2qn_AXviBn0-8/%3Fcid%3D73b8f7b18aaf110f780c50d7c4bbe9e1b147a7666be384fc%26rid%3Dgiphy.mp4%26ct%3Dg/https/media2.giphy.com/media/GvMo19TyWuMiQ/giphy.mp4')
-        if(randomhouse == 'Hufflepuff') message.channel.send('https://media.giphy.com/media/PMp40oEvNfKve/giphy.gif')
+        message.reply(randomreply);  
+        if (!message.guild.me.hasPermission('MANAGE_NICKNAMES')) return message.channel.send('I don\'t have permission to change your nickname!');
+         message.member.setNickname(randomartist.replace('changeNick ', '')); 
+        
+        talkedRecently.add(message.author.id);
+        setTimeout(() => {
+            talkedRecently.delete(message.author.id);
+        }, 43200000);
+    }
+
         }
 
     }
 
-     if(cmd === 'spell'){
-
-     
-             const randomspell = harryPotterSpells.all[Math.floor(Math.random() * harryPotterSpells.all.length)];
-             console.log(randomspell)
-             const embed = new Discord.MessageEmbed()
-             .setTitle("Spell: "+randomspell.name)
-             .setDescription(`Type: ${randomspell.type}\nEffect: ${randomspell.effect}`)
-             message.channel.send(embed)
-     }
-
-        if(cmd === 'ginny'){
-            if(message.author.id == "511234972602859521"){
-                const members = message.guild.roles.cache.get('771308497252909066').members.map(m=>m.user.id);
-                const randommember = members[Math.floor(Math.random() * members.length)];
-               console.log(`<@${randommember}>`)
-               message.channel.send(`<@${randommember}> is **Ginny Weasley** of the Server!`)
-            }
-            else{
-                message.channel.send('Only Dumbledore can use this command.')
-            }
-        }
+    }
+    else 
+    message.channel.send('Move to <#845606633547366440>')
 
 
 
