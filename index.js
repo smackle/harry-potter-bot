@@ -4,7 +4,7 @@ const Discord = require("discord.js")
 const { Client } = require("discord.js");
 // const fetch = require("node-fetch");
 const client = new Client();
-const PREFIX = "-";
+const PREFIX = "m.";
 
 const talkedRecently = new Set();    
 
