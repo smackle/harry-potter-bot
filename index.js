@@ -140,7 +140,7 @@ client.on("message", async message => {
     if (cmd === "ping") return message.channel.send(`Pong! \`${client.ws.ping}ms\``);
 
     if (cmd === "help") return message.channel.send("Type -marvel to choose a marvel character.") 
-
+    if (cmd === "bye") return message.channel.send("Kevin Feige will Return..") 
     // if(cmd === 'pair')
     // {
     //     const members = message.guild.roles.cache.get('851770390539665408').members.map(m=>m.user.id);
